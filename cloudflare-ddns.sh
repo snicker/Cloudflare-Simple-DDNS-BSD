@@ -625,7 +625,7 @@ function load_config() {
     function get_config_value() {
         local key="$1"
         local value
-        value=$(grep -E "^\s*$key\s*=" "$CONFIG_FILE" | sed -E 's/^[^=]+=\s*//; s/\s*(#.*)?$//')
+        value=$(grep -E "^\s*$key\s*=" "$CONFIG_FILE" | sed -E 's/^[^=]+=\s*/; s/\s*(#.*)?$/')
         # Remove surrounding quotes if present
         value=$(echo "$value" | sed -E 's/^"(.*)"$/\1/')
         echo "$value"
