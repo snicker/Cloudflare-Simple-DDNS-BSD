@@ -36,7 +36,7 @@ REQUIRED_CMDS=("curl" "dig" "jq" "grep" "gawk" "sed" "getopt")
 # Function to perform log rotation
 function rotate_log() {
     if [ -f "$LOGFILE" ]; then
-        log_size=$(stat -c%s "$LOGFILE")
+        log_size=$(stat -f%z t.c "$LOGFILE")
         if (( log_size > MAX_LOG_SIZE )); then
             mv "$LOGFILE" "$LOGFILE.$(date '+%Y%m%d%H%M%S')"
             touch "$LOGFILE"
